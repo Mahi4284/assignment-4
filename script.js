@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateCounters() {
     const allCards = document.querySelectorAll('.job-card');
+
     const interviewCards = document.querySelectorAll('.job-card[data-status="interview"]');
     const rejectedCards = document.querySelectorAll('.job-card[data-status="rejected"]');
 
@@ -30,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     interviewCountEl.textContent = interviewCards.length;
     rejectedCountEl.textContent = rejectedCards.length;
 
-  
+
     allJobsCountEl.textContent = `${allCards.length} Jobs`;
   }
 
-  
+
   function filterCards() {
     const cards = document.querySelectorAll('.job-card');
 
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    
+
     const visibleCards = Array.from(cards).filter(c => c.style.display !== 'none');
 
     let noJobsMsg = document.getElementById('no-jobs-message');
@@ -71,18 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
             <p class="text-xl text-gray-600 font-medium">No jobs found</p>
             <p class="text-gray-400 mt-2">No applications match this filter yet</p>
         `;
-
         cardsContainer.appendChild(noJobsMsg);
       }
+
       noJobsMsg.style.display = 'block';
     } else {
       if (noJobsMsg) noJobsMsg.style.display = 'none';
     }
   }
 
-  
+
   function handleTabClick(tabEl, tabName) {
-    
+
     [allTab, interviewTab, rejectTab].forEach(btn => {
       btn.classList.remove('bg-blue-600', 'text-white');
       btn.classList.add('bg-gray-200');
@@ -148,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  
+
   updateCounters();
   filterCards();
   handleTabClick(allTab, 'all');
